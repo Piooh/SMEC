@@ -1,0 +1,12 @@
+# a commit ignore file #
+########################
+*.csproj
+*.sln
+*.v12
+*.suo
+
+########################
+# Enable Directory #
+
+Library/
+obj/
