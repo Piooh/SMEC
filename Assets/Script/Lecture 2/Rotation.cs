@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Rotation : MonoBehaviour 
 {
-	private float angle = 0f;
+	//private float angle = 0f;
 	private void Update()
 	{
 		var horizontal	= Input.GetAxis( "Horizontal" );

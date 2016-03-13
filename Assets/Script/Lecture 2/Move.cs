@@ -23,7 +23,7 @@ public class Move : MonoBehaviour
 		var direction	= (Vector3.forward * virtical) + (Vector3.right * horizontal);
 		var speed		= 2f;
 
-		//transform.position = postion + ( direction * speed * Time.deltaTime);
-		transform.Translate( direction * speed * Time.deltaTime, Space.World );
+		transform.position = postion + ( direction * speed * Time.deltaTime);
+		//transform.Translate( direction * speed * Time.deltaTime, Space.World );
 	}
 }
