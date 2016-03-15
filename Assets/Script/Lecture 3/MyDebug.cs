@@ -73,7 +73,7 @@ public class MyDebug
 			for ( int i = 0; i < 50; i++ )
 			{
 				point2				= rot * point1;
-				Draw.Line( position + point1, position + point2, color, duration );
+				Line( position + point1, position + point2, color, duration );
 				point1				= point2;
 			}
 		}
@@ -88,7 +88,7 @@ public class MyDebug
 			var frame		= stackTrace.GetFrame(1);
 
 			string message	= "[!!]{Assert}[!!] : " + frame.GetMethod().Name + 
-				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber + "] )";
+				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber() + "] )";
 
 			UnityEngine.Debug.LogError( message );
 			UnityEngine.Debug.Break();
@@ -104,7 +104,7 @@ public class MyDebug
 			var frame		= stackTrace.GetFrame(1);
 			
 			string message	= "[!!]{Assert}[!!] : " + frame.GetMethod().Name + 
-				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber + "] )";
+				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber() + "] )";
 			
 			UnityEngine.Debug.LogError( message + msg );
 			UnityEngine.Debug.Break();
@@ -120,7 +120,7 @@ public class MyDebug
 			var frame		= stackTrace.GetFrame(1);
 			
 			string message	= "[!!]{Assert}[!!] : " + frame.GetMethod().Name + 
-				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber + "] )";
+				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber() + "] )";
 			
 			UnityEngine.Debug.LogError( message );
 			UnityEngine.Debug.Break();
@@ -136,7 +136,7 @@ public class MyDebug
 			var frame		= stackTrace.GetFrame(1);
 			
 			string message	= "[!!]{Assert}[!!] : " + frame.GetMethod().Name + 
-				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber + "] )";
+				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber() + "] )";
 			
 			UnityEngine.Debug.LogError( message + msg );
 			UnityEngine.Debug.Break();
@@ -146,13 +146,13 @@ public class MyDebug
 	[System.Diagnostics.Conditional("DEBUG_DEV")]
 	public static void Assert( System.Object obj )
 	{
-		if( false == obj )
+		if( null == obj )
 		{
 			var stackTrace  = new System.Diagnostics.StackTrace();
 			var frame		= stackTrace.GetFrame(1);
 			
 			string message	= "[!!]{Assert}[!!] : " + frame.GetMethod().Name + 
-				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber + "] )";
+				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber() + "] )";
 			
 			UnityEngine.Debug.LogError( message );
 			UnityEngine.Debug.Break();
@@ -162,13 +162,13 @@ public class MyDebug
 	[System.Diagnostics.Conditional("DEBUG_DEV")]
 	public static void Assert( System.Object obj, System.Object msg )
 	{
-		if( false == obj )
+		if( null == obj )
 		{
 			var stackTrace  = new System.Diagnostics.StackTrace();
 			var frame		= stackTrace.GetFrame(1);
 			
 			string message	= "[!!]{Assert}[!!] : " + frame.GetMethod().Name + 
-				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber + "] )";
+				"( " + frame.GetFileName() + " [Line : " + frame.GetFileLineNumber() + "] )";
 			
 			UnityEngine.Debug.LogError( message + msg );
 			UnityEngine.Debug.Break();
