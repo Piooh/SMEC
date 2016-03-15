@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMove : MonoBehaviour {
+public class PlayerMove : MonoBehaviour 
+{
+	private float speed = 5f;
 
-	// Use this for initialization
-	void Start () {
-	
+	private void FixedUpdate()
+	{
+		Move();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	private void Move()
+	{
+		var vertical	= Input.GetAxis( "Vertical" );
+		var horizontal	= Input.GetAxis( "Horizontal" );
+
+		var direction	= (Vector3.forward * vertical) + (Vector3.right * horizontal);
+
+		transform.position = transform.position + (direction * speed * Time.deltaTime);
 	}
 }
