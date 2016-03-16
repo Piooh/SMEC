@@ -5,6 +5,11 @@ public class PlayerMove : MonoBehaviour
 {
 	private float speed = 5f;
 
+	private void Awake()
+	{
+		//MyDebug.Log.Normal( InputController.Inst.name );
+	}
+
 	private void FixedUpdate()
 	{
 		Move();
