@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 
 	private void Awake()
 	{
-		MyDebug.Log.Normal( InputController.Inst.name );
+		//MyDebug.Log.Normal( InputController.Inst.name );
 	}
 
 	private void FixedUpdate()

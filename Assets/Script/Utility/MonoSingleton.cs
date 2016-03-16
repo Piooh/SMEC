@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// 모노 싱글톤
 public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
 	private static T instance	= null;
