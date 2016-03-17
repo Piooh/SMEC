@@ -5,6 +5,6 @@ public class ConflictTest : MonoBehaviour
 {
 	private void Awake()
 	{
-		MyDebug.Log.Error( "Force Conflict" );
+		MyDebug.Log.Warnnig( "Force Conflict" );
 	}
 }
