@@ -23,6 +23,7 @@ public class AnimationControll : MonoBehaviour
 		MyDebug.Assert( playerMove, "Can not find PlayerMove Component" );
 
 		playerMove.onMove += OnMove;
+		playerMove.onJump += OnJump;
 	}
 
 	private void OnMove( float moveScale )
@@ -30,4 +31,10 @@ public class AnimationControll : MonoBehaviour
 		animator.SetBool( "Move", 0f != moveScale );
 	}
 
+	private void OnJump( bool isJump )
+	{
+		animator.SetBool( "Jump", isJump );
+	}
+
 }
+
