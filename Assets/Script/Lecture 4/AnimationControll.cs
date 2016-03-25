@@ -1,14 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum AnimationState : int
-{
-	Idle	= 0,
-	Move	= 1,
-	Lose	= 99,
-	Win		= 100,
-}
-
 public class AnimationControll : MonoBehaviour 
 {
 	private Animator animator		= null;
