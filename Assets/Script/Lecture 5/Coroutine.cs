@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Test2 : MonoBehaviour {
+public class Coroutine : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
