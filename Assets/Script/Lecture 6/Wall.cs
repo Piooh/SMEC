@@ -8,7 +8,7 @@ public class Wall : MonoBehaviour
 		while( true )
 		{
 			if( true == BallFactory.Inst.CanICreate ) { BallFactory.Inst.Create();}
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.1f);
 		}
 	}
 }
