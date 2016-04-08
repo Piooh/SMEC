@@ -3,7 +3,9 @@ using System.Collections;
 
 public class BallMovement : MonoBehaviour 
 {
-	private Renderer renderer		= null;
+	public bool MoveStop			{ get; set; }
+
+	private Renderer render		= null;
 	private Rigidbody ballRigid	= null;
 	private Vector3 direction		= Vector3.zero;
 	
@@ -11,7 +13,8 @@ public class BallMovement : MonoBehaviour
 	private void Awake()
 	{
 		ballRigid		= GetComponent<Rigidbody>();
-		renderer		= GetComponent<MeshRenderer>();
+		render			= GetComponent<MeshRenderer>();
+		MoveStop		= false;
 	}
 
 	private void OnEnable()
@@ -21,17 +24,17 @@ public class BallMovement : MonoBehaviour
 		{
 			case 0:
 				gameObject.layer = LayerMask.NameToLayer("Red");
-				renderer.material.color = Color.red;
+				render.material.SetColor( ReadOnlys.DefaultMaterialColor, Color.red );
 				break;
 
 			case 1:
 				gameObject.layer = LayerMask.NameToLayer("Yellow");
-				renderer.material.color = Color.yellow;
+				render.material.SetColor( ReadOnlys.DefaultMaterialColor, Color.yellow );
 				break;
 
 			default:
 				gameObject.layer = LayerMask.NameToLayer("Blue");
-				renderer.material.color = Color.blue;
+				render.material.SetColor( ReadOnlys.DefaultMaterialColor, Color.blue );
 				break;
 
 		}
@@ -39,12 +42,22 @@ public class BallMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		ballRigid.AddForce( direction * 10f, ForceMode.Force );
-
-		var distance = Vector3.zero - transform.position;
-		if( 400 <= distance.sqrMagnitude )
+		if( true == MoveStop )				
 		{
-			BallFactory.Inst.Release( gameObject );
+			ballRigid.isKinematic	= true;
+			ballRigid.velocity		= Vector3.zero;
+		}
+		else
+		{
+			ballRigid.isKinematic	= false;
+
+			ballRigid.AddForce( direction * 10f, ForceMode.Force );
+
+			var distance = Vector3.zero - transform.position;
+			if( 400 <= distance.sqrMagnitude )
+			{
+				BallFactory.Inst.Release( gameObject );
+			}
 		}
 	}
 
