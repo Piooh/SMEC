@@ -4,6 +4,7 @@
 *.sln
 *.v12
 *.suo
+*.userprefs
 
 ########################
 # Enable Directory #
@@ -17,3 +18,4 @@ Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
 Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll.meta
 Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll
 Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll.meta
+ProjectSettings/ProjectVersion.txt
