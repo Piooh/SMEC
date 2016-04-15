@@ -69,32 +69,63 @@
 //		ENDCG
 //	}
 
+	Properties
+	{
+		_DiffuseTexture ("MainTexture", 2D) = "White" {}
+		_DiffuseLightColor ("DiffuseLightColor", COLOR) = (1, 1, 1, 1)
+	}
+
 	SubShader
 	{
 		Tags{ "RenderType"="Opaque" }
 
 		CGPROGRAM
-		#pragma surface surf DiffLight
+//		#pragma surface surf DiffLightSpecular
+//		#pragma surface surf DiffLight
+//		#pragma surface surf Lambert
+		#pragma surface surf BlinnPhong
 
 		struct Input
 		{
-			float4 color : COLOR;
+			float2 uv_MainTex;
 		};
+
+		sampler2D 	_DiffuseTexture;
+		float4		_DiffuseLightColor;
 
 		void surf( Input In, inout SurfaceOutput o )
 		{
-			o.Albedo = In.color.rgb;
+			o.Albedo = tex2D( _DiffuseTexture, In.uv_MainTex );
 		}
 
-		half4 LightingDiffLight( SurfaceOutput s, half3 lightDir, half atten )
-		{
-			half4 c;
-			half nDotL = dot( lightDir, s.Normal );
-			c.rgb = s.Albedo * ((nDotL) * atten);
-			c.a	 = s.Alpha;
+//		half4 LightingDiffLightSpecular( SurfaceOutput s, half3 lightDir, half3 viewDir,  half atten )
+//		{
+//			half4 c;
+//			half nDotL = dot( lightDir, s.Normal );
+//			c.rgb = s.Albedo * ((nDotL) * atten);
+//			c.a	 = s.Alpha;
+//
+//			return c;
+//		}
 
-			return c;
-		}
+//		half4 LightingDiffLight( SurfaceOutput s, half3 lightDir, half3 viewDir, half atten )
+//		{
+//			half4 c;
+//			float diff = saturate(dot(s.Normal, lightDir));
+//			float3 highLight = normalize(lightDir + viewDir);
+//
+//			float refl = 0;
+//			if( diff > 0 )
+//			{
+//				refl = saturate(dot(s.Normal, highLight));
+//				refl = pow(refl, 40.0);
+//			}
+//
+//
+//			c.rgb = ((s.Albedo * _DiffuseLightColor.rgb * diff) + refl ) * atten;
+//
+//			return c;
+//		}
 
 		ENDCG
 	}

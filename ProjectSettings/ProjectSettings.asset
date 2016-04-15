@@ -179,7 +179,7 @@ PlayerSettings:
   m_BuildTargetBatching:
   - m_BuildTarget: Web
     m_StaticBatching: 1
-    m_DynamicBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
     m_APIs: 08000000
