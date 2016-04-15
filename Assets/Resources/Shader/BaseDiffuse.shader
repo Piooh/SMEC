@@ -81,9 +81,9 @@
 
 		CGPROGRAM
 //		#pragma surface surf DiffLightSpecular
-//		#pragma surface surf DiffLight
+		#pragma surface surf DiffLight
 //		#pragma surface surf Lambert
-		#pragma surface surf BlinnPhong
+//		#pragma surface surf BlinnPhong
 
 		struct Input
 		{
@@ -126,6 +126,27 @@
 //
 //			return c;
 //		}
+
+		half4 LightingDiffLight( SurfaceOutput s, half3 lightDir, half3 viewDir, half atten )
+		{
+			half4 c;
+			float diff = saturate(dot(s.Normal, lightDir));
+			float3 toonDiff = ceil((s.Albedo * diff) * 5.0) / 5.0;
+
+			float3 highLight = normalize(lightDir + viewDir);
+			float refl = 0;
+			if( toonDiff.x > 0 )
+			{
+				refl = saturate(dot(s.Normal, highLight));
+				refl = pow(refl, 40.0);
+			}
+
+
+			c.rgb = toonDiff + refl;
+
+
+			return c;
+		}
 
 		ENDCG
 	}
